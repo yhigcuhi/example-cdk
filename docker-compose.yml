@@ -1,0 +1,16 @@
+# docker compose versionとしての書き方のあれ
+version: "3.8"
+
+# 利用する コンテナ 一覧
+services:
+    # AWS CDKのサービス
+    cdk:
+        # 管理コンテナ名
+        container_name: example-cdk
+        # Dockerファイルにて 定義
+        build: ./docker/cdk
+        # 場所
+        volumes:
+            - ./cdk-src/:/app
+        # コンテナを正常終了するのを防ぐ
+        tty: true
