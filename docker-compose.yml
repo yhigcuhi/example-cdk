@@ -11,6 +11,8 @@ services:
         build: ./docker/cdk
         # 場所
         volumes:
-            - ./cdk-src/:/app
+            - ./source/iac-src/:/app
+            # TODO: アプリケーションもマウントすれば cdkのコンテナの中で見れるかと
+            - ./docker/cdk/.env.example/:/app/.env
         # コンテナを正常終了するのを防ぐ
         tty: true
